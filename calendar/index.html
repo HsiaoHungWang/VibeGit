@@ -8,7 +8,7 @@
 
 </body>
 <h1>2026 年 5 月行事曆</h1>
-<table border="1" cellspacing="0" cellpadding="8" style="border-collapse: collapse; text-align: center;">
+<table id="calendar" border="1" cellspacing="0" cellpadding="8" style="border-collapse: collapse; text-align: center;">
     <thead>
         <tr>
             <th>日</th>
@@ -21,53 +21,41 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-            <td>4</td>
-        </tr>
-        <tr>
-            <td>5</td>
-            <td>6</td>
-            <td>7</td>
-            <td>8</td>
-            <td>9</td>
-            <td>10</td>
-            <td>11</td>
-        </tr>
-        <tr>
-            <td>12</td>
-            <td>13</td>
-            <td>14</td>
-            <td>15</td>
-            <td>16</td>
-            <td>17</td>
-            <td>18</td>
-        </tr>
-        <tr>
-            <td>19</td>
-            <td>20</td>
-            <td>21</td>
-            <td>22</td>
-            <td>23</td>
-            <td>24</td>
-            <td>25</td>
-        </tr>
-        <tr>
-            <td>26</td>
-            <td>27</td>
-            <td>28</td>
-            <td>29</td>
-            <td>30</td>
-            <td>31</td>
-            <td></td>
-        </tr>
+        <!-- JavaScript 產生內容 -->
     </tbody>
 </table>
+<script>
+    function generateCalendar(year, month) {
+        const tbody = document.querySelector('#calendar tbody');
+        tbody.innerHTML = '';
+        // JS 的月份從 0 開始，這裡 month 傳入 5 代表 5 月
+        const firstDay = new Date(year, month - 1, 1);
+        const lastDay = new Date(year, month, 0);
+        let startDay = firstDay.getDay();
+        let totalDays = lastDay.getDate();
+        let row = document.createElement('tr');
+        // 填入空白
+        for (let i = 0; i < startDay; i++) {
+            row.appendChild(document.createElement('td'));
+        }
+        for (let date = 1; date <= totalDays; date++) {
+            if ((row.children.length) === 7) {
+                tbody.appendChild(row);
+                row = document.createElement('tr');
+            }
+            const td = document.createElement('td');
+            td.textContent = date;
+            row.appendChild(td);
+        }
+        // 填滿最後一列
+        while (row.children.length < 7) {
+            row.appendChild(document.createElement('td'));
+        }
+        tbody.appendChild(row);
+    }
+    // 產生 2026 年 5 月行事曆
+    generateCalendar(2026, 5);
+</script>
 </body>
 </body>
 
