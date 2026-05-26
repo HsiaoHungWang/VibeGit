@@ -5,6 +5,13 @@
     <meta charset="UTF-8">
     <title>空白網頁</title>
     <style>
+        .today {
+            background: #c8f7c5 !important;
+            color: #1a3d1a;
+            font-weight: bold;
+            box-shadow: 0 0 0 2px #7be495 inset;
+        }
+
         body {
             font-family: 'Segoe UI', 'Microsoft JhengHei', Arial, sans-serif;
             background: #f6f8fa;
@@ -93,12 +100,14 @@
     function generateCalendar(year, month) {
         const tbody = document.querySelector('#calendar tbody');
         tbody.innerHTML = '';
-        // JS 的月份從 0 開始，這裡 month 傳入 5 代表 5 月
         const firstDay = new Date(year, month - 1, 1);
         const lastDay = new Date(year, month, 0);
         let startDay = firstDay.getDay();
         let totalDays = lastDay.getDate();
         let row = document.createElement('tr');
+        // 今日日期
+        const today = new Date();
+        const isThisMonth = (today.getFullYear() === year && (today.getMonth() + 1) === month);
         // 填入空白
         for (let i = 0; i < startDay; i++) {
             row.appendChild(document.createElement('td'));
@@ -110,6 +119,10 @@
             }
             const td = document.createElement('td');
             td.textContent = date;
+            // 標記今日
+            if (isThisMonth && date === today.getDate()) {
+                td.classList.add('today');
+            }
             row.appendChild(td);
         }
         // 填滿最後一列
