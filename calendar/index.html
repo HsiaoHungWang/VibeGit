@@ -4,6 +4,71 @@
 <head>
     <meta charset="UTF-8">
     <title>空白網頁</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', 'Microsoft JhengHei', Arial, sans-serif;
+            background: #f6f8fa;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        h1 {
+            margin-top: 40px;
+            color: #2d3a4b;
+            letter-spacing: 2px;
+        }
+
+        table {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+            margin: 32px 0 0 0;
+            border-collapse: separate;
+            border-spacing: 0;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            width: 48px;
+            height: 48px;
+            text-align: center;
+            font-size: 1.1em;
+        }
+
+        thead th {
+            background: #4f8cff;
+            color: #fff;
+            font-weight: bold;
+            border-bottom: 2px solid #e0e7ef;
+        }
+
+        tbody td {
+            background: #f9fbfd;
+            color: #2d3a4b;
+            border-bottom: 1px solid #e0e7ef;
+            border-right: 1px solid #e0e7ef;
+        }
+
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        tbody td:last-child,
+        thead th:last-child {
+            border-right: none;
+        }
+
+        tbody td:not(:empty):hover {
+            background: #e6f0ff;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+    </style>
 </head>
 
 </body>
